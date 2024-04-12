@@ -1,0 +1,66 @@
+<div class="ngTestPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-1 col-sm-4"></div>
+      <div class="col-10 col-sm-4 text-center">
+        <h1>Registrazione utente</h1>
+        <div>
+          <img [src]="loadImg()" alt="imageTest" width="50%"/>
+        </div>
+        <form [formGroup]="formTest" (ngSubmit)="printMe()">
+          <br/>
+          <mat-form-field class="example-full-width w-100" appearance="fill">
+            <mat-label>User</mat-label>
+            <input matInput type="text" [(ngModel)]="writeText" formControlName="username">
+          </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width w-100" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" formControlName="password">
+          </mat-form-field>
+          <br/>
+          <div class="row">
+            <div class="col-6" >
+              <button class="btn btn-primary w-100" type="button" routerLink="/prova" *ngIf="!(logService.isLogged$ | async)">Accedi</button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-success w-100" type="submit">Salva</button>
+            </div>
+          </div>
+        </form>
+        <p class="text-danger">{{errorResponse}}</p>
+        <i class="text-primary">{{writeText}}</i>
+      </div>
+      <div class="col-1 col-sm-4"></div>
+    </div>
+
+    <div class="text-center" *ngIf="logService.isLogged$ | async">
+      <hr>
+      <h2>Utenti</h2>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Password</th>
+          </tr>
+          <tr *ngFor="let user of usersData">
+            <td>{{user.idUser}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>
+              <button mat-raised-button (click)="editMe(user)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+            <td>
+              <button mat-raised-button color="warn" (click)="deleteMe(user)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

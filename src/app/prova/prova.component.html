@@ -1,0 +1,28 @@
+<div class="ngTestPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4 text-center">
+        <h1>Accedi</h1>
+        <form [formGroup]="logTest" (ngSubmit)="logMe()">
+          <br/>
+          <mat-form-field class="example-full-width w-100" appearance="fill">
+            <mat-label>User</mat-label>
+            <input matInput type="text" formControlName="username">
+          </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width w-100" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" formControlName="password">
+          </mat-form-field>
+          <br/>
+          <div>
+              <button class="btn btn-primary w-100" type="submit">Accedi</button>
+          </div>
+        </form>
+        <p class="text-danger">{{errorResponse}}</p>
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+</div>

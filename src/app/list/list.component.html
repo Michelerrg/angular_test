@@ -1,0 +1,29 @@
+<div class="ngTestPage">
+  <div class="container">
+    <h2>Da fare:</h2>
+    <form [formGroup]="formList" (ngSubmit)="rememberIt()">
+      <div class="inputBtn mb-2">
+        <input formControlName="element" class="form-control" id="inputList" type="text" placeholder="Scrivi qui...">
+          <span>
+            <button class="btn btn-secondary" id="addBtn" type="submit">Aggiungi</button>
+          </span>
+      </div>
+    </form>
+    <p class="text-danger">{{errorResponse}}</p>
+    <ul class="list-group mb-5" id="toDoList" *ngIf="listData != null && listData.length > 1">
+      <div *ngFor="let e of listData">
+        <li class="list-group-item" *ngIf="e != ''">
+          <div class="row" >
+            <div class="col-6">
+              <p>{{e}}</p>
+            </div>
+            <div class="col-6 text-end">
+              <!-- <button mat-raised-button color="warn" type="button" (click)="deleteIt(e)"><mat-icon>delete</mat-icon></button> -->
+              <span class="close" (click)="deleteIt(e)">&#215;</span>
+            </div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

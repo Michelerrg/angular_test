@@ -1,0 +1,46 @@
+<div class="ngTestPage">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-2"></div>
+        <div class="col-lg-4 col-md-8">
+          <div class="text-center">
+            <h1>Calcola il tuo codice fiscale</h1>
+          </div>
+          <form [formGroup]="formCF" (ngSubmit)="checkCF()">
+            <br/>
+            <label class="fw-bold">Cognome</label>
+            <input class="form-control" type="text" formControlName="cognome">
+            <br/>
+            <label class="fw-bold">Nome</label>
+            <input class="form-control" type="text" formControlName="nome">
+            <br/>
+            <label class="fw-bold">Sesso</label>
+            <select class="form-select" formControlName="sesso">
+              <option *ngFor="let o of optionMF">{{o}}</option>
+            </select>
+            <br/>
+            <label class="fw-bold">Luogo di nascita</label>
+            <select class="form-select" formControlName="luogoNascita">
+              <option *ngFor="let c of cities">{{c.descrizione}}</option>
+            </select>
+            <br/>
+            <label class="fw-bold">Provincia (sigla)</label>
+            <select class="form-select" formControlName="provincia">
+              <option *ngFor="let p of province">{{p}}</option>
+            </select>
+            <br/>
+            <label class="fw-bold">Data di nascita</label>
+            <input class="form-control" type="date" formControlName="dataNascita">
+            <br/>
+            <div>
+                <button class="btn btn-primary w-100" type="submit">Calcola</button>
+            </div>
+          </form>
+          <div class="text-center pt-2 pb-2">
+            <p class="fw-bold text-{{addClass}}">{{result}}</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-2"></div>
+      </div>
+    </div>
+  </div>
